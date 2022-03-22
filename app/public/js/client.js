@@ -20,3 +20,10 @@ document.getElementById('form-messages').addEventListener('submit', ()  => {
 socket.on('send-message-server-to-client', (messages) => {
     console.log(messages)
 })
+
+const queryString = location.search
+const info = Qs.parse(queryString, {
+    ignoreQueryPrefix: true
+})
+console.log(info)
+socket.emit('join-room-client-to-server', info)
